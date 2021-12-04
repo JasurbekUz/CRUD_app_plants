@@ -1,11 +1,12 @@
 package database
 
-var CT_GET_BY_ID = `
+var SELECT_PLANTS = `
 	select
+		c.category_id,
 		c.name,
-		array_agg(p.*)
+		p.plant_id,
+		p.plant_name,
+		p.quantity
 	from plants as p
 	join categories as c using (category_id)
-	where category_id = ?
-	group by c.name
 `

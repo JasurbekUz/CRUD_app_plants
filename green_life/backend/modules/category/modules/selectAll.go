@@ -6,9 +6,7 @@ import (
 	d "backend/database"
 )
 
-var categories []Category
-
-func SelectAll () []Category {
+func SelectAll () (categories []Category) {
 
 	d.DB.Find(&categories)
 	

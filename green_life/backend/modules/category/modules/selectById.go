@@ -6,9 +6,7 @@ import (
 	d "backend/database"
 )
 
-var categoryFields GetCategoryFieldsById
-
-func SelectById (id int) (GetCategoryFieldsById, bool) {
+func SelectById (id int) (categoryFields GetCategoryFieldsById, _ bool) {
 
 	result := d.DB.Raw("select name from categories where category_id = ?", id).Scan(&categoryFields.Name)
 	d.DB.Raw("select * from plants where category_id = ?", id).Scan(&categoryFields.Plants)

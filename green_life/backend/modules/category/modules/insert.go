@@ -5,10 +5,7 @@ import (
 	d "backend/database"
 )
 
-var category Category
-var postCategory PostCategory
-
-func InsertCategory (newCategory PostCategory) Category {
+func InsertCategory (newCategory PostCategory) (category Category) {
 
 	d.DB.Raw("insert into categories (name) values (?) returning *", newCategory.Name).Scan(&category)
  
